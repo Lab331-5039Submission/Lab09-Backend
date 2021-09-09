@@ -26,6 +26,6 @@ public class Event {
     @ManyToOne
     Organizer organizer;
 
-    @ManyToMany(mappedBy = "eventHistory")
+    @ManyToMany(mappedBy = "eventsHistory")
     List<Participant> participants;
 }
