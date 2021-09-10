@@ -1,4 +1,5 @@
 package se331.lab.rest.entity;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +17,6 @@ public class Participant {
     Long id;
     String name;
     String telNo;
-
     @ManyToMany
-    List<Event> eventsHistory;
+    List<Event> eventHistory;
 }
