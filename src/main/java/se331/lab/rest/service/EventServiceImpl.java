@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import se331.lab.rest.dao.EventDao;
+import se331.lab.rest.dao.ParticipantDao;
 import se331.lab.rest.entity.Event;
 import se331.lab.rest.entity.Organizer;
-import se331.lab.rest.proper.OrganizerDao;
+import se331.lab.rest.dao.OrganizerDao;
 
 import javax.transaction.Transactional;
 
@@ -16,6 +17,8 @@ public class EventServiceImpl implements EventService{
     EventDao eventDao;
     @Autowired
     OrganizerDao organizerDao;
+    @Autowired
+    ParticipantDao participantDao;
     @Override
     public Integer getEventSize() {
         return eventDao.getEventSize();
