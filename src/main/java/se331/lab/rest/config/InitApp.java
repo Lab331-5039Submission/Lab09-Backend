@@ -12,6 +12,8 @@ import se331.lab.rest.repository.OrganizerRepository;
 import se331.lab.rest.repository.ParticipantRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
@@ -27,17 +29,17 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         Organizer org1,org2,org3;
         Participant par1,par2,par3,par4,par5;
-        par1 = participantRepository.save(Participant.builder().name("John").telNo("1150").build());
-        par2 = participantRepository.save(Participant.builder().name("Peter").telNo("191").build());
-        par3 = participantRepository.save(Participant.builder().name("Tim").telNo("1112").build());
-        par4 = participantRepository.save(Participant.builder().name("Robert").telNo("1619").build());
-        par5 = participantRepository.save(Participant.builder().name("Tony").telNo("5555").build());
-
+        par1 = participantRepository.save(Participant.builder().name("Sahachan").telNo("0836306462").build());
+        par2 = participantRepository.save(Participant.builder().name("Flowero").telNo("0816175000").build());
+        par3 = participantRepository.save(Participant.builder().name("Oralita").telNo("0831649558").build());
+        par4 = participantRepository.save(Participant.builder().name("Panomete").telNo("0821234578").build());
+        par5 = participantRepository.save(Participant.builder().name("Somehting").telNo("1597538524685").build());
 
         org1 = organizerRepository.save(Organizer.builder().name("CAMT").build());
         org2 = organizerRepository.save(Organizer.builder().name("CMU").build());
         org3 = organizerRepository.save(Organizer.builder().name("ChaingMai").build());
         Event tempEvent;
+        List<Participant> participants;
         tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Midterm Exam")
@@ -48,6 +50,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org1);
+        participants = new ArrayList<>();
+        participants.add(par1);
+        participants.add(par2);
+        participants.add(par3);
+        tempEvent.setParticipants(participants);
         org1.getOwnEvents().add(tempEvent);
         par1.getEventHistory().add(tempEvent);
         par2.getEventHistory().add(tempEvent);
@@ -63,6 +70,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org1);
+        participants = new ArrayList<>();
+        participants.add(par1);
+        participants.add(par2);
+        participants.add(par3);
+        tempEvent.setParticipants(participants);
         org1.getOwnEvents().add(tempEvent);
         par1.getEventHistory().add(tempEvent);
         par2.getEventHistory().add(tempEvent);
@@ -78,6 +90,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(false)
                 .build());
         tempEvent.setOrganizer(org2);
+        participants = new ArrayList<>();
+        participants.add(par1);
+        participants.add(par2);
+        participants.add(par4);
+        tempEvent.setParticipants(participants);
         org2.getOwnEvents().add(tempEvent);
         par1.getEventHistory().add(tempEvent);
         par2.getEventHistory().add(tempEvent);
@@ -93,6 +110,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(true)
                 .build());
         tempEvent.setOrganizer(org3);
+        participants = new ArrayList<>();
+        participants.add(par3);
+        participants.add(par4);
+        participants.add(par5);
+        tempEvent.setParticipants(participants);
         org3.getOwnEvents().add(tempEvent);
         par3.getEventHistory().add(tempEvent);
         par4.getEventHistory().add(tempEvent);
